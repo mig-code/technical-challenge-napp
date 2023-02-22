@@ -1,4 +1,8 @@
+@use 'reset';
+@import 'variables';
+
 body {
     margin: 0;
-    font-family: 'Roboto', sans-serif;
+    font-family: $font-stack-primary;
+    color: $color-primary;
 }

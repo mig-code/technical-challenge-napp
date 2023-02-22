@@ -1,6 +1,6 @@
 import { Layout } from '../layout/layout';
 import { LazyRoutes } from '../routes/lazy.routes';
-import './App.css';
+import './App.scss';
 
 export function App() {
     return (
