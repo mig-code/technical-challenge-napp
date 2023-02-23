@@ -1,4 +1,232 @@
+@use 'reset';
+@import 'variables';
+
 body {
     margin: 0;
-    font-family: 'Roboto', sans-serif;
+    font-family: $font-stack-primary;
+    color: $color-primary;
+}
+.mobile-box {
+    display: flex;
+    flex-direction: column;
+    align-items: baseline;
+    justify-content: flex-start;
+    margin: 1rem 0.5rem;
+    padding: 1.2rem;
+    transition: all 0.1s ease-in-out;
+    animation: fadeInAnimation ease 0.1s;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+    background-color: $color-white;
+    border-radius: 10px;
+
+    &__image {
+        object-fit: cover;
+        height: 100%;
+        object-position: center;
+        margin-bottom: 0.3rem;
+        padding-bottom: 0.5rem;
+        border-bottom: 1px solid $color-black-light-2;
+    }
+
+    &:hover {
+        cursor: pointer;
+        border-radius: 10px;
+        box-shadow: rgba(0, 0, 0, 0.264) 0px 1px 3px 0px,
+            rgba(27, 31, 35, 0.264) 0px 0px 0px 1px;
+        transform: scale(1.02);
+    }
+
+    &__brand {
+        font-weight: bold;
+        display: inline;
+        background-color: $color-secondary-dark;
+        font-size: 1rem;
+        color: $color-white;
+        padding: 0.1rem 0.4rem;
+        margin-right: 0.5rem;
+        border-radius: 0.3rem;
+    }
+
+    &__model {
+        display: inline;
+        font-size: 0.8rem;
+        color: $color-black;
+    }
+
+    &__price {
+        font-weight: bold;
+        color: $color-black;
+
+        font-size: 1rem;
+    }
+}
+.search-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    justify-items: center;
+    margin: 0.5rem;
+    padding: 0;
+    background-color: $color-white;
+    animation: fadeInAnimation ease 1s;
+}
+.details-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 4rem;
+    padding: 1rem;
+    margin: 0 1rem;
+    animation: fadeInAnimation ease 0.5s;
+    font-size: 0.8rem;
+    background-color: $color-white;
+}
+.details-left {
+    background-color: $color-white;
+    border-radius: 10px;
+}
+.details-left__image {
+    padding: 1rem;
+    min-width: 250px;
+    margin-bottom: 1rem;
+}
+.details-left__image img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.details-right {
+    background-color: $color-white;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-evenly;
+    width: 450px;
+
+    &__properties-box {
+        background-color: $color-white;
+        padding: 1rem;
+
+        margin: 0 0 1rem 0;
+        width: 100%;
+    }
+    &__model {
+        font-size: 1.3rem;
+        font-weight: bold;
+        color: $color-primary;
+        margin-bottom: 0.5rem;
+    }
+    &__feature {
+        font-size: 0.8rem;
+
+        font-weight: bold;
+    }
+
+    &--textmodifier {
+        font-size: 0.8rem;
+        color: $color-grey-dark-1;
+        margin-left: 0.5rem;
+        font-weight: 400;
+    }
+}
+
+.actions {
+    background-color: $color-white;
+
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+
+    &__colors-box,
+    &__storage-box {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: flex-start;
+        font-size: 0.8rem;
+        margin-bottom: 1rem;
+    }
+
+    &__color-option,
+    &__storage-option {
+        cursor: pointer;
+        background-color: $color-white;
+        border: solid 1px $color-secondary;
+        color: $color-secondary;
+        margin: 0.5rem;
+        padding: 0.5rem;
+        border-radius: 0.5rem;
+    }
+
+    &__buttons-box {
+        margin-top: 1rem;
+    }
+
+    &__button {
+        cursor: pointer;
+        background-color: $color-white;
+        border: solid 1px $color-secondary;
+        color: $color-secondary;
+        margin: 0.5rem;
+        padding: 0.5rem;
+        border-radius: 0.5rem;
+    }
+    &__button:hover {
+        background-color: $color-secondary;
+        color: $color-white;
+        border: solid 1px $color-secondary;
+    }
+    &__button--add {
+        background-color: $color-primary;
+        color: $color-white;
+        border: solid 1px $color-primary;
+        font-weight: 600;
+    }
+    &__button--add:hover {
+        background-color: $color-white;
+        color: $color-primary;
+        border: solid 1px $color-primary;
+    }
+    &__button--back {
+        background-color: $color-black-light-2;
+        color: $color-white;
+        border: solid 1px $color-black-light-2;
+        font-weight: 600;
+    }
+    &__button--back:hover {
+        background-color: $color-white;
+        color: $color-black-light-2;
+        border: solid 1px $color-black-light-2;
+    }
+}
+.isSelected {
+    background-color: $color-secondary;
+    color: $color-white;
+    border: solid 1px $color-secondary;
+}
+
+@media screen and (max-width: 768px) {
+    .details-container {
+        flex-direction: column;
+        align-items: center;
+        gap: 0;
+    }
+    .details-left__image {
+        max-width: 150px;
+        height: auto;
+    }
+
+    .details-right {
+        width: auto;
+        margin-top: 1rem;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .search-grid {
+        grid-template-columns: repeat(auto-fit, minmax(152px, 1fr));
+    }
 }

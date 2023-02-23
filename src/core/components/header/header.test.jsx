@@ -10,7 +10,9 @@ describe('When render Header component', () => {
                 <Header></Header>
             </MemoryRouter>
         );
-        const titleElement = screen.getByRole('heading', { name: /header/i });
+        const titleElement = screen.getByRole('heading', {
+            name: /Napp Mobile Shop/i,
+        });
         expect(titleElement).toBeInTheDocument();
     });
 });
