@@ -124,11 +124,3 @@ export const mobileDetailsMock = {
         ],
     },
 };
-
-export const getAllMobilesMock = () => {
-    return allMobilesMock;
-};
-
-export const getMobileDetailsMock = () => {
-    return mobileDetailsMock;
-};
