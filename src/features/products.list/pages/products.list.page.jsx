@@ -5,9 +5,13 @@ import { SearchBox } from '../components/search.box/search.box';
 import { getProducts } from '../../../core/services/products.services';
 import { consoleDebug } from '../../../utils/debug';
 import {
-    getStorageList,
-    setStorageList,
+    getDataLocalStorage,
+    persistDataLocalStorage,
 } from '../../../core/services/local.storage';
+import {
+    checkIfCacheIsExpired,
+    setNextCacheRefreshTime,
+} from '../../../utils/cache';
 
 export default function ProductsListPage() {
     const [products, setProducts] = useState([]);
@@ -16,20 +20,23 @@ export default function ProductsListPage() {
     };
 
     const handleLoadProducts = useCallback(async () => {
-        let products = getStorageList('products');
-        let cacheTimeHasEnded = false;
+        console.log('handleLoadProducts');
+        let products = getDataLocalStorage('products');
+        let isCacheTimeExpired = checkIfCacheIsExpired();
 
-        if (products && !cacheTimeHasEnded) {
+        if (products && !isCacheTimeExpired) {
             setProducts(products);
-            console.log('Load products from local storage');
+
             return;
         }
-        if (cacheTimeHasEnded || !products) {
+        if (isCacheTimeExpired || !products) {
             try {
                 const products = await getProducts();
                 setProducts(products);
-                setStorageList('products', products);
-                console.log('Loaded products from server');
+                persistDataLocalStorage('products', products);
+
+                const currentTime = Date.now();
+                setNextCacheRefreshTime(currentTime);
             } catch (error) {
                 handleError(error);
             }

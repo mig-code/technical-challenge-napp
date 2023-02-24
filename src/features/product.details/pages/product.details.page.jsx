@@ -4,27 +4,41 @@ import { useParams } from 'react-router-dom';
 import { DetailsCards } from '../components/details.card/details.card';
 
 import { getProductById } from '../../../core/services/products.services';
-import { consoleDebug } from '../../../tools/debug';
+import { consoleDebug } from '../../../utils/debug';
+import {
+    getDataLocalStorage,
+    persistDataLocalStorage,
+} from '../../../core/services/local.storage';
+
 export default function ProductDetailsPage() {
     const [mobileData, setMobileData] = useState({});
     const mobileId = useParams().id;
-    console.log('mobileId', mobileId);
 
     const handleError = (error) => {
         consoleDebug(error);
     };
 
     const handleLoadProducts = useCallback(async () => {
-        try {
-            const product = await getProductById(mobileId);
-            setMobileData(product);
-        } catch (error) {
-            handleError(error);
+        let productById = getDataLocalStorage(`${mobileId}`);
+        let isCacheTimeExpired = false;
+
+        if (productById && !isCacheTimeExpired) {
+            setMobileData(productById);
+
+            return;
+        }
+        if (isCacheTimeExpired || !productById) {
+            try {
+                const products = await getProductById(mobileId);
+                setMobileData(products);
+                persistDataLocalStorage(`${mobileId}`, products);
+            } catch (error) {
+                handleError(error);
+            }
         }
     }, [mobileId]);
 
     useEffect(() => {
-        console.log('ProductDetailsPage useEffect');
         handleLoadProducts();
     }, [handleLoadProducts]);
 

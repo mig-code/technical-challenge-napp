@@ -1,4 +1,4 @@
-import { getStorageList, setStorageList } from './local.storage';
+import { getDataLocalStorage, persistDataLocalStorage } from './local.storage';
 
 const testItem = { name: 'Test' };
 
@@ -10,7 +10,7 @@ describe('Given storage functions', () => {
                 .mockReturnValue(JSON.stringify([testItem]));
         });
         test('Web API function should be call', () => {
-            const result = getStorageList('test');
+            const result = getDataLocalStorage('test');
             expect(result).toEqual([testItem]);
             expect(Storage.prototype.getItem).toHaveBeenCalledWith('test');
         });
@@ -20,7 +20,7 @@ describe('Given storage functions', () => {
             Storage.prototype.getItem = jest.fn().mockReturnValue(null);
         });
         test('Web API function should be called', () => {
-            const result = getStorageList('test');
+            const result = getDataLocalStorage('test');
             expect(result).toEqual(null);
             expect(Storage.prototype.getItem).toHaveBeenCalledWith('test');
         });
@@ -30,7 +30,7 @@ describe('Given storage functions', () => {
             Storage.prototype.setItem = jest.fn();
         });
         test('Web API function should be called', () => {
-            setStorageList('test', [testItem]);
+            persistDataLocalStorage('test', [testItem]);
             expect(Storage.prototype.setItem).toHaveBeenCalledWith(
                 'test',
                 JSON.stringify([testItem])

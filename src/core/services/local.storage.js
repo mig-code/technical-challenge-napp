@@ -1,9 +1,9 @@
-export const getStorageList = (storeName) => {
+export const getDataLocalStorage = (storeName) => {
     const result = localStorage.getItem(storeName);
     if (!result) return null;
     return JSON.parse(result);
 };
 
-export const setStorageList = (storeName, data) => {
+export const persistDataLocalStorage = (storeName, data) => {
     localStorage.setItem(storeName, JSON.stringify(data));
 };
