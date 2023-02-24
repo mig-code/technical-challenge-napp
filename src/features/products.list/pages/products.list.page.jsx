@@ -3,25 +3,20 @@ import { useEffect, useState, useCallback } from 'react';
 import { List } from '../components/list/list';
 import { SearchBox } from '../components/search.box/search.box';
 import { getProducts } from '../../../core/services/products.services';
-import { consoleDebug } from '../../../tools/debug';
+
+import { manageLoadDataSource } from '../../../utils/manage.load.data';
 
 export default function ProductsListPage() {
     const [products, setProducts] = useState([]);
-    const handleError = (error) => {
-        consoleDebug(error);
-    };
 
     const handleLoadProducts = useCallback(async () => {
-        try {
-            const products = await getProducts();
-            setProducts(products);
-        } catch (error) {
-            handleError(error);
-        }
+        const storageKey = 'products';
+
+        const data = await manageLoadDataSource(getProducts, storageKey);
+        setProducts(data);
     }, []);
 
     useEffect(() => {
-        console.log('ProductsListPage useEffect');
         handleLoadProducts();
     }, [handleLoadProducts]);
 
