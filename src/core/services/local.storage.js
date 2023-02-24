@@ -7,3 +7,7 @@ export const getDataLocalStorage = (storeName) => {
 export const persistDataLocalStorage = (storeName, data) => {
     localStorage.setItem(storeName, JSON.stringify(data));
 };
+
+export const removeDataLocalStorage = () => {
+    localStorage.clear();
+};

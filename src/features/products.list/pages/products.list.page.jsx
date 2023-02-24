@@ -3,44 +3,17 @@ import { useEffect, useState, useCallback } from 'react';
 import { List } from '../components/list/list';
 import { SearchBox } from '../components/search.box/search.box';
 import { getProducts } from '../../../core/services/products.services';
-import { consoleDebug } from '../../../utils/debug';
-import {
-    getDataLocalStorage,
-    persistDataLocalStorage,
-} from '../../../core/services/local.storage';
-import {
-    checkIfCacheIsExpired,
-    setNextCacheRefreshTime,
-} from '../../../utils/cache';
+
+import { manageLoadDataSource } from '../../../utils/manage.load.data';
 
 export default function ProductsListPage() {
     const [products, setProducts] = useState([]);
-    const handleError = (error) => {
-        consoleDebug(error);
-    };
 
     const handleLoadProducts = useCallback(async () => {
-        console.log('handleLoadProducts');
-        let products = getDataLocalStorage('products');
-        let isCacheTimeExpired = checkIfCacheIsExpired();
+        const storageKey = 'products';
 
-        if (products && !isCacheTimeExpired) {
-            setProducts(products);
-
-            return;
-        }
-        if (isCacheTimeExpired || !products) {
-            try {
-                const products = await getProducts();
-                setProducts(products);
-                persistDataLocalStorage('products', products);
-
-                const currentTime = Date.now();
-                setNextCacheRefreshTime(currentTime);
-            } catch (error) {
-                handleError(error);
-            }
-        }
+        const data = await manageLoadDataSource(getProducts, storageKey);
+        setProducts(data);
     }, []);
 
     useEffect(() => {

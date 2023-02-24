@@ -1,20 +1,20 @@
 import {
     getDataLocalStorage,
     persistDataLocalStorage,
+    removeDataLocalStorage,
 } from '../core/services/local.storage';
 
 const cacheStorageKey = 'lastApiCall';
-const timeToRefresh = 10 * 1000; // 30sec in miliseconds
+const timeToRefresh = 5 * 60 * 1000; // 5min in milliseconds for testing purposes
 
 export const checkIfCacheIsExpired = () => {
-    let currentTime = Date.now();
+    const currentTime = Date.now();
 
     const lastApiCall = getDataLocalStorage(cacheStorageKey);
     const cacheExpired = currentTime > lastApiCall + timeToRefresh;
 
     if (!lastApiCall || cacheExpired) {
-        console.log('CACHE EXPIRADO');
-        setNextCacheRefreshTime(currentTime);
+        if (cacheExpired) removeDataLocalStorage();
         return true;
     }
 
@@ -23,5 +23,6 @@ export const checkIfCacheIsExpired = () => {
 
 export const setNextCacheRefreshTime = (currentTime) => {
     const lastApiCall = currentTime;
+
     persistDataLocalStorage(cacheStorageKey, lastApiCall);
 };
