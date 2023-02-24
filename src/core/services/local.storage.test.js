@@ -21,7 +21,7 @@ describe('Given storage functions', () => {
         });
         test('Web API function should be called', () => {
             const result = getStorageList('test');
-            expect(result).toEqual([]);
+            expect(result).toEqual(null);
             expect(Storage.prototype.getItem).toHaveBeenCalledWith('test');
         });
     });

@@ -1,6 +1,6 @@
 export const getStorageList = (storeName) => {
     const result = localStorage.getItem(storeName);
-    if (!result) return [];
+    if (!result) return null;
     return JSON.parse(result);
 };
 

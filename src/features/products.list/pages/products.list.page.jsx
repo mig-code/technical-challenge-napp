@@ -3,7 +3,11 @@ import { useEffect, useState, useCallback } from 'react';
 import { List } from '../components/list/list';
 import { SearchBox } from '../components/search.box/search.box';
 import { getProducts } from '../../../core/services/products.services';
-import { consoleDebug } from '../../../tools/debug';
+import { consoleDebug } from '../../../utils/debug';
+import {
+    getStorageList,
+    setStorageList,
+} from '../../../core/services/local.storage';
 
 export default function ProductsListPage() {
     const [products, setProducts] = useState([]);
@@ -12,16 +16,27 @@ export default function ProductsListPage() {
     };
 
     const handleLoadProducts = useCallback(async () => {
-        try {
-            const products = await getProducts();
+        let products = getStorageList('products');
+        let cacheTimeHasEnded = false;
+
+        if (products && !cacheTimeHasEnded) {
             setProducts(products);
-        } catch (error) {
-            handleError(error);
+            console.log('Load products from local storage');
+            return;
+        }
+        if (cacheTimeHasEnded || !products) {
+            try {
+                const products = await getProducts();
+                setProducts(products);
+                setStorageList('products', products);
+                console.log('Loaded products from server');
+            } catch (error) {
+                handleError(error);
+            }
         }
     }, []);
 
     useEffect(() => {
-        console.log('ProductsListPage useEffect');
         handleLoadProducts();
     }, [handleLoadProducts]);
 
