@@ -11,10 +11,12 @@ export const checkIfCacheIsExpired = () => {
     const currentTime = Date.now();
 
     const lastApiCall = getDataLocalStorage(cacheStorageKey);
-    const cacheExpired = currentTime > lastApiCall + timeToRefresh;
+    const cacheTimeIsExpired = currentTime > lastApiCall + timeToRefresh;
 
-    if (!lastApiCall || cacheExpired) {
-        if (cacheExpired) removeDataLocalStorage();
+    if (!lastApiCall) return true;
+
+    if (cacheTimeIsExpired) {
+        removeDataLocalStorage();
         return true;
     }
 

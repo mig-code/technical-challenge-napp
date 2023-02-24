@@ -1,9 +1,13 @@
-import { getDataLocalStorage, persistDataLocalStorage } from './local.storage';
+import {
+    getDataLocalStorage,
+    persistDataLocalStorage,
+    removeDataLocalStorage,
+} from './local.storage';
 
 const testItem = { name: 'Test' };
 
 describe('Given storage functions', () => {
-    describe('When we use getStorage with data in localStorage', () => {
+    describe('When we use getDataLocalStorage with data in localStorage', () => {
         beforeEach(() => {
             Storage.prototype.getItem = jest
                 .fn()
@@ -15,7 +19,7 @@ describe('Given storage functions', () => {
             expect(Storage.prototype.getItem).toHaveBeenCalledWith('test');
         });
     });
-    describe('When we use getStorageList without data in localStorage', () => {
+    describe('When we use getDataLocalStorage without data in localStorage', () => {
         beforeEach(() => {
             Storage.prototype.getItem = jest.fn().mockReturnValue(null);
         });
@@ -25,7 +29,7 @@ describe('Given storage functions', () => {
             expect(Storage.prototype.getItem).toHaveBeenCalledWith('test');
         });
     });
-    describe('When we use setStorageList', () => {
+    describe('When we use persistDataLocalStorage', () => {
         beforeEach(() => {
             Storage.prototype.setItem = jest.fn();
         });
@@ -35,6 +39,16 @@ describe('Given storage functions', () => {
                 'test',
                 JSON.stringify([testItem])
             );
+        });
+    });
+
+    describe('When we use removeDataLocalStorage', () => {
+        beforeEach(() => {
+            Storage.prototype.clear = jest.fn();
+        });
+        test('Web API function should be called', () => {
+            removeDataLocalStorage();
+            expect(Storage.prototype.clear).toHaveBeenCalled();
         });
     });
 });
