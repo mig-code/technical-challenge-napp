@@ -37,7 +37,7 @@ describe('Given "checkIfCacheIsExpired" function', () => {
 describe('Given "setNextCacheRefreshTime" function', () => {
     test('Then "setNextCacheRefreshTime" should update the localStorage', () => {
         const currentTime = Date.now();
-        setNextCacheRefreshTime(currentTime);
+        setNextCacheRefreshTime();
         expect(persistDataLocalStorage).toHaveBeenCalledWith(
             'lastApiCall',
             currentTime

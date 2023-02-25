@@ -5,12 +5,13 @@ import ProductDetailsPage from './product.details.page';
 import { MemoryRouter } from 'react-router-dom';
 import { manageLoadDataSource } from '../../../utils/manage.load.data';
 
-jest.mock('../components/details.card/details.card', () => ({
-    DetailsCards: () => <div>Details Card</div>,
-}));
-
 jest.mock('../../../utils/manage.load.data', () => ({
     manageLoadDataSource: jest.fn(),
+}));
+
+//Mockck details card
+jest.mock('../components/details.card/details.card', () => ({
+    DetailsCard: () => <div>Details Card</div>,
 }));
 
 describe('When render Product Details Page', () => {

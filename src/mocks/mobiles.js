@@ -48,34 +48,6 @@ export const allMobilesMock = [
         price: '200',
         imgUrl: 'https://itx-frontend-test.onrender.com/images/ke-gsQbO8qH9PQ-zcdiAJ.jpg',
     },
-    {
-        id: 'meQvyTcXACAwWn3wCKSw6',
-        brand: 'Acer',
-        model: 'Liquid Zest',
-        price: '110',
-        imgUrl: 'https://itx-frontend-test.onrender.com/images/meQvyTcXACAwWn3wCKSw6.jpg',
-    },
-    {
-        id: 'qSyO-2wbNUssUhBb2waew',
-        brand: 'Acer',
-        model: 'Predator 8',
-        price: '350',
-        imgUrl: 'https://itx-frontend-test.onrender.com/images/qSyO-2wbNUssUhBb2waew.jpg',
-    },
-    {
-        id: 'P2oqviM96_ozwsgZkj9Xf',
-        brand: 'Acer',
-        model: 'Liquid Jade Primo',
-        price: '220',
-        imgUrl: 'https://itx-frontend-test.onrender.com/images/P2oqviM96_ozwsgZkj9Xf.jpg',
-    },
-    {
-        id: 'ypkE9xhckmUbS1UJRm5dS',
-        brand: 'Acer',
-        model: 'Liquid Z330',
-        price: '110',
-        imgUrl: 'https://itx-frontend-test.onrender.com/images/ypkE9xhckmUbS1UJRm5dS.jpg',
-    },
 ];
 
 export const mobileDetailsMock = {
@@ -117,7 +89,10 @@ export const mobileDetailsMock = {
     battery: 'Non-removable Li-Ion 3400 mAh battery (12.92 Wh)',
     colors: ['Black'],
     options: {
-        colors: [{ code: 1000, name: 'Black' }],
+        colors: [
+            { code: 1000, name: 'Black' },
+            { code: 1001, name: 'White' },
+        ],
         storages: [
             { code: 2000, name: '16 GB' },
             { code: 2001, name: '32 GB' },

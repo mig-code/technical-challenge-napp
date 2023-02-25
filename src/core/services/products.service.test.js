@@ -1,14 +1,17 @@
 /* eslint-disable testing-library/no-await-sync-query */
 
 import { allMobilesMock, mobileDetailsMock } from '../../mocks/mobiles';
-import { getProducts, getProductById } from './products.services';
+import {
+    getProducts,
+    getProductById,
+    addProductToCart,
+} from './products.services';
 
 describe('Given Products Service', () => {
     const mockProducts = allMobilesMock;
     const mockProductDetails = mobileDetailsMock;
 
     beforeEach(() => {
-        // mocks de fetch
         global.fetch = jest.fn().mockResolvedValue({
             ok: true,
             json: jest.fn().mockResolvedValue(mockProducts),
@@ -60,6 +63,43 @@ describe('Given Products Service', () => {
                 await getProductById();
             }).rejects.toThrowError();
             expect(global.fetch).not.toHaveBeenCalled();
+        });
+    });
+
+    describe('When we use addProductToCart', () => {
+        test('If the payload is valid, we received a count 1', async () => {
+            const mockResponse = { count: 1 };
+            const validPayload = {
+                id: '1',
+                colorCode: 1,
+                storageCode: 2,
+            };
+            global.fetch = jest.fn().mockResolvedValue({
+                ok: true,
+                json: jest.fn().mockResolvedValue(mockResponse),
+            });
+            const data = await addProductToCart(validPayload);
+            expect(global.fetch).toHaveBeenCalled();
+            expect(data).toEqual(mockResponse);
+        });
+        test('If there is no payload with received a rejected Promise', async () => {
+            await expect(async () => {
+                await addProductToCart();
+            }).rejects.toThrowError();
+            expect(global.fetch).not.toHaveBeenCalled();
+        });
+
+        test('If the data is not valid, we received a rejected Promise', async () => {
+            const wrongPayload = {
+                wrongKey: 'wrongValue',
+            };
+            global.fetch = jest.fn().mockResolvedValue({
+                ok: false,
+            });
+            await expect(async () => {
+                await addProductToCart(wrongPayload);
+            }).rejects.toThrowError();
+            expect(global.fetch).toHaveBeenCalled();
         });
     });
 });
