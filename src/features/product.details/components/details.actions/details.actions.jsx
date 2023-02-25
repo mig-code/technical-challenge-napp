@@ -29,7 +29,7 @@ export function DetailsActions({ mobileData }) {
         event.preventDefault();
         if (checkIfCacheIsExpired()) {
             resetCartCount();
-           
+
             notifyError('No se ha podido añadir al carrito, reiniciando caché');
             setNextCacheRefreshTime();
             resetCartCount();
@@ -37,7 +37,7 @@ export function DetailsActions({ mobileData }) {
             return;
         }
         const response = await handleAddToCart(mobileForm);
-        console.log('RESPONSE', response);
+
         if (response) {
             notifySuccess();
         } else {
@@ -55,6 +55,7 @@ export function DetailsActions({ mobileData }) {
                 </div>
                 <div className="actions__colors-box">
                     <select
+                        data-testid="color-select"
                         name="colorCode"
                         value={mobileForm.colorCode}
                         onChange={handleMobileFormInput}
@@ -67,6 +68,7 @@ export function DetailsActions({ mobileData }) {
                     </select>
 
                     <select
+                        data-testid="storage-select"
                         name="storageCode"
                         value={mobileForm.storageCode}
                         onChange={handleMobileFormInput}
