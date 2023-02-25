@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import { useState } from 'react';
+import { addProductToCart } from '../../../../core/services/products.services';
 
 export function DetailsActions({ mobileData }) {
     const initialMobileFormState = {
@@ -13,12 +14,13 @@ export function DetailsActions({ mobileData }) {
     const handleMobileFormInput = (event) => {
         const { name, value } = event.target;
         setMobileForm({ ...mobileForm, [name]: parseInt(value, 10) });
-        
     };
 
-    const handleSubmitMobileForm = (event) => {
+    const handleSubmitMobileForm = async (event) => {
         event.preventDefault();
         console.log(mobileForm);
+        const resp = await addProductToCart(mobileForm);
+        console.log(resp);
     };
 
     return (
