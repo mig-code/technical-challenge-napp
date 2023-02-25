@@ -5,6 +5,7 @@ import {
     checkIfCacheIsExpired,
     setNextCacheRefreshTime,
 } from '../../utils/cache';
+import { consoleDebug } from '../../utils/debug';
 import {
     getDataLocalStorage,
     persistDataLocalStorage,
@@ -16,38 +17,37 @@ export function useCart() {
 
     const [cartCount, setCartCount] = useState(inititalCartCount);
 
+    const resetCartCount = useCallback(() => {
+        setCartCount(0);
+        persistDataLocalStorage(storageKey, 0);
+    }, []);
+
     const handleAddToCart = useCallback(
         async (mobileForm) => {
-            if (checkIfCacheIsExpired()) {
-                setCartCount(0);
-                persistDataLocalStorage(storageKey, 0);
-                console.log('NO HA PODIDO AÑADIRSE AL CARRITO');
-                const currentTime = Date.now();
-                setNextCacheRefreshTime(currentTime);
-                return;
-            }
-
             try {
-                await addProductToCart(mobileForm);
+                if (checkIfCacheIsExpired()) {
+                    resetCartCount();
+                    console.log('NO HA PODIDO AÑADIRSE AL CARRITO');
 
+                    setNextCacheRefreshTime();
+                    return;
+                }
+                await addProductToCart(mobileForm);
                 setCartCount((prevCount) => prevCount + 1);
                 persistDataLocalStorage(storageKey, cartCount + 1);
             } catch (error) {
-                console.log(error);
+                handleError(error);
             }
         },
-        [cartCount]
+        [cartCount, resetCartCount]
     );
 
     const getCartCount = useCallback(() => {
-        console.log('geting cart count');
         if (!inititalCartCount || checkIfCacheIsExpired()) {
-            setCartCount(0);
-            persistDataLocalStorage(storageKey, 0);
-            console.log('INICIANDO CARRITO');
+            resetCartCount();
         }
         return cartCount;
-    }, [cartCount, inititalCartCount]);
+    }, [inititalCartCount, cartCount, resetCartCount]);
 
     useEffect(() => {}, []);
 
@@ -56,3 +56,7 @@ export function useCart() {
         handleAddToCart,
     };
 }
+
+const handleError = (error) => {
+    consoleDebug(error);
+};

@@ -26,7 +26,9 @@ export const checkIfCacheIsExpired = () => {
     return false;
 };
 
-export const setNextCacheRefreshTime = (currentTime) => {
+export const setNextCacheRefreshTime = () => {
+    const currentTime = Date.now();
+
     const lastApiCall = currentTime;
 
     persistDataLocalStorage(cacheStorageKey, lastApiCall);

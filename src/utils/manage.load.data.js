@@ -15,11 +15,8 @@ export const manageLoadDataSource = async (getData, storageKey) => {
     if (!localStorageData || isCacheTimeExpired) {
         try {
             const apiData = await getData();
-
             persistDataLocalStorage(storageKey, apiData);
-
-            const currentTime = Date.now();
-            setNextCacheRefreshTime(currentTime);
+            setNextCacheRefreshTime();
 
             return apiData;
         } catch (error) {
