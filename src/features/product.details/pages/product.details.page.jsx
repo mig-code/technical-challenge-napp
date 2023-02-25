@@ -8,7 +8,7 @@ export default function ProductDetailsPage() {
     const [mobileData, setMobileData] = useState({});
     const mobileId = useParams().id;
 
-    const handleLoadProducts = useCallback(async () => {
+    const handleLoadProduct = useCallback(async () => {
         const storageKey = mobileId;
 
         const data = await manageLoadDataSource(
@@ -19,8 +19,8 @@ export default function ProductDetailsPage() {
     }, [mobileId]);
 
     useEffect(() => {
-        handleLoadProducts();
-    }, [handleLoadProducts]);
+        handleLoadProduct();
+    }, [handleLoadProduct]);
 
     return (
         <div>

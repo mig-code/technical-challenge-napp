@@ -1,9 +1,15 @@
+import { useContext } from 'react';
+
+import { CartContext } from '../../context/cart.context';
 export function Header() {
+    console.log('rendering header');
+    const { cartCount } = useContext(CartContext);
+
     return (
         <header>
             <h1>Napp Mobile Shop</h1>
             <p>Inicio</p>
-            <p>Productos: 0</p>
+            Cart Count <span>{cartCount}</span>
         </header>
     );
 }

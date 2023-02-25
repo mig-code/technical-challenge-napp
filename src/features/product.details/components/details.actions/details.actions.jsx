@@ -1,8 +1,10 @@
 import { Link } from 'react-router-dom';
-import { useState } from 'react';
-import { addProductToCart } from '../../../../core/services/products.services';
+import { useContext, useState } from 'react';
+import { CartContext } from '../../../../core/context/cart.context';
 
 export function DetailsActions({ mobileData }) {
+    const { cartCount, handleAddToCart } = useContext(CartContext);
+
     const initialMobileFormState = {
         id: mobileData.id,
         colorCode: mobileData.options.colors[0].code,
@@ -18,13 +20,16 @@ export function DetailsActions({ mobileData }) {
 
     const handleSubmitMobileForm = async (event) => {
         event.preventDefault();
-        console.log(mobileForm);
-        const resp = await addProductToCart(mobileForm);
-        console.log(resp);
+        handleAddToCart(mobileForm);
     };
 
     return (
         <form className="actions" onSubmit={handleSubmitMobileForm}>
+            <div>
+                <h3>
+                    Cart Count <span>{cartCount}</span>
+                </h3>
+            </div>
             <div className="actions__colors-box">
                 <select
                     name="colorCode"
