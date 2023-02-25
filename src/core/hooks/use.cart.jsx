@@ -1,10 +1,7 @@
 import { useCallback, useEffect, useState } from 'react';
 
 import { addProductToCart } from '../../core/services/products.services';
-import {
-    checkIfCacheIsExpired,
-    setNextCacheRefreshTime,
-} from '../../utils/cache';
+import { checkIfCacheIsExpired } from '../../utils/cache';
 import { consoleDebug } from '../../utils/debug';
 import {
     getDataLocalStorage,
@@ -25,21 +22,15 @@ export function useCart() {
     const handleAddToCart = useCallback(
         async (mobileForm) => {
             try {
-                if (checkIfCacheIsExpired()) {
-                    resetCartCount();
-                    console.log('NO HA PODIDO AÑADIRSE AL CARRITO');
-
-                    setNextCacheRefreshTime();
-                    return;
-                }
-                await addProductToCart(mobileForm);
+                const result = await addProductToCart(mobileForm);
                 setCartCount((prevCount) => prevCount + 1);
                 persistDataLocalStorage(storageKey, cartCount + 1);
+                return result;
             } catch (error) {
                 handleError(error);
             }
         },
-        [cartCount, resetCartCount]
+        [cartCount]
     );
 
     const getCartCount = useCallback(() => {
@@ -52,6 +43,7 @@ export function useCart() {
     useEffect(() => {}, []);
 
     return {
+        resetCartCount,
         getCartCount,
         handleAddToCart,
     };
