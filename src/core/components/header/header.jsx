@@ -2,7 +2,6 @@ import { useContext } from 'react';
 
 import { CartContext } from '../../context/cart.context';
 export function Header() {
-    console.log('rendering header');
     const { cartCount } = useContext(CartContext);
 
     return (

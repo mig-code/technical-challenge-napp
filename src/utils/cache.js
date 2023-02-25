@@ -5,10 +5,8 @@ import {
 } from '../core/services/local.storage';
 
 const cacheStorageKey = 'lastApiCall';
-// 10 sec in milliseconds for testing purposes
-const timeToRefresh = 10 * 1000;
 
-// 1 hour in milliseconds60 * 60 * 1000;
+const timeToRefresh = 60 * 60 * 1000; // 1 hour in milliseconds 60 * 60 * 1000;
 
 export const checkIfCacheIsExpired = () => {
     const currentTime = Date.now();
