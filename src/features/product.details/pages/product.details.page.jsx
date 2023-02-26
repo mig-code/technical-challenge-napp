@@ -15,7 +15,7 @@ export default function ProductDetailsPage() {
             () => getProductById(mobileId),
             storageKey
         );
-        console.log('data', data);
+
         setMobileData(data);
     }, [mobileId]);
 

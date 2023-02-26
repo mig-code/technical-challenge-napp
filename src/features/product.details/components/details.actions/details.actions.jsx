@@ -5,7 +5,7 @@ import {
     checkIfCacheIsExpired,
     setNextCacheRefreshTime,
 } from '../../../../utils/cache';
-import { Toaster } from 'react-hot-toast';
+
 import { notifyError, notifySuccess } from '../../../../utils/toasts';
 
 export function DetailsActions({ mobileData }) {
@@ -28,8 +28,6 @@ export function DetailsActions({ mobileData }) {
     const handleSubmitMobileForm = async (event) => {
         event.preventDefault();
         if (checkIfCacheIsExpired()) {
-            resetCartCount();
-
             notifyError('No se ha podido añadir al carrito, reiniciando caché');
             setNextCacheRefreshTime();
             resetCartCount();
@@ -94,7 +92,6 @@ export function DetailsActions({ mobileData }) {
                     </button>
                 </div>
             </form>
-            <Toaster />
         </>
     );
 }

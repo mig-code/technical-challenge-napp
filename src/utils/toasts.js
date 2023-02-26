@@ -2,7 +2,7 @@ import toast from 'react-hot-toast';
 
 export const notifySuccess = () =>
     toast.success('El producto se ha añadido al carrito', {
-        duration: 1000,
+        duration: 2000,
         style: {
             border: '1px solid #464d77',
             padding: '16px',
@@ -15,7 +15,7 @@ export const notifySuccess = () =>
     });
 export const notifyError = (error) =>
     toast.error(error, {
-        duration: 1500,
+        duration: 2500,
         style: {
             border: '1px solid #ec5431',
             padding: '16px',
