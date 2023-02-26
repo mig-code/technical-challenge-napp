@@ -14,7 +14,7 @@ describe('Given Toast Module', () => {
 
     describe('When notifyError function is called', () => {
         const mockStyles = {
-            duration: 1500,
+            duration: 2500,
             style: {
                 border: '1px solid #ec5431',
                 padding: '16px',
