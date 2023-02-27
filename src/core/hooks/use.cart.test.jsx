@@ -15,6 +15,7 @@ import {
 
 jest.mock('../../utils/cache', () => ({
     checkIfCacheIsExpired: jest.fn(),
+    setNextCacheRefreshTime: jest.fn(),
 }));
 
 jest.mock('../services/local.storage', () => ({

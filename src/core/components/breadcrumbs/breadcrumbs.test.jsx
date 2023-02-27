@@ -1,8 +1,7 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
-import { MemoryRouter } from 'react-router-dom';
+import { MemoryRouter, useLocation } from 'react-router-dom';
 import { BreadCrumbs } from './breadcrumbs';
-import { useLocation } from 'react-router-dom';
 
 jest.mock('react-router-dom', () => ({
     ...jest.requireActual('react-router-dom'),
