@@ -50,6 +50,16 @@ export const allMobilesMock = [
     },
 ];
 
+export const filterMobilesMock = [
+    {
+        id: 'cGjFJlmqNPIwU59AOcY8H',
+        brand: 'Acer',
+        model: 'Liquid Z6 Plus',
+        price: '250',
+        imgUrl: 'https://itx-frontend-test.onrender.com/images/cGjFJlmqNPIwU59AOcY8H.jpg',
+    },
+];
+
 export const mobileDetailsMock = {
     id: 'ZmGrkLRPXOTpxsU4jjAcv',
     brand: 'Acer',
