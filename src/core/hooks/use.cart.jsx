@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState } from 'react';
+import { useCallback, useState } from 'react';
 
 import { addProductToCart } from '../../core/services/products.services';
 import {
@@ -43,8 +43,6 @@ export function useCart() {
         }
         return cartCount;
     }, [inititalCartCount, cartCount, resetCartCount]);
-
-    useEffect(() => {}, []);
 
     return {
         resetCartCount,
