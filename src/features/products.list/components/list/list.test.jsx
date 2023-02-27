@@ -5,8 +5,8 @@ import { allMobilesMock } from '../../../../mocks/mobiles';
 import { List } from './list';
 
 describe('When render List Component', () => {
-    const mockProducts = allMobilesMock;
-    test('It should render a list of products', () => {
+    test('When render with products', () => {
+        const mockProducts = allMobilesMock;
         render(
             <MemoryRouter>
                 <List products={mockProducts} />
@@ -17,5 +17,17 @@ describe('When render List Component', () => {
 
         const totalItems = screen.getAllByRole('article').length;
         expect(totalItems).toBe(mockProducts.length);
+    });
+    test('When render without products', () => {
+        const mockProducts = [];
+        render(
+            <MemoryRouter>
+                <List products={mockProducts} />
+            </MemoryRouter>
+        );
+        const noProductsElement = screen.getByText(
+            /No hay productos que coincidan con la búsqueda/i
+        );
+        expect(noProductsElement).toBeInTheDocument();
     });
 });

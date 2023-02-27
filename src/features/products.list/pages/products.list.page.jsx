@@ -5,7 +5,7 @@ import { SearchBox } from '../components/search.box/search.box';
 import { getProducts } from '../../../core/services/products.services';
 
 import { manageLoadDataSource } from '../../../utils/manage.load.data';
-import { filterByModelAndBrand } from '../../../utils/searchfilters';
+import { filterByModelAndBrand } from '../../../utils/search.filters';
 
 export default function ProductsListPage() {
     const [products, setProducts] = useState([]);

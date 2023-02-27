@@ -6,7 +6,7 @@ jest.mock('../layout/layout', () => ({
     Layout: () => <div>Mock Layout</div>,
 }));
 
-test('renders learn react link', () => {
+test('when renders App , renders the Layout', () => {
     render(
         <MemoryRouter>
             <App></App>

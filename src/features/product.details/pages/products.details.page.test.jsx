@@ -9,7 +9,7 @@ jest.mock('../../../utils/manage.load.data', () => ({
     manageLoadDataSource: jest.fn(),
 }));
 
-//Mockck details card
+
 jest.mock('../components/details.card/details.card', () => ({
     DetailsCard: () => <div>Details Card</div>,
 }));
