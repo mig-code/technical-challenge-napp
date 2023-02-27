@@ -8,6 +8,9 @@ export function List({ products }) {
                     <Item item={item}></Item>
                 </article>
             ))}
+            {products.length === 0 && (
+                <p>No hay productos que coincidan con la búsqueda</p>
+            )}
         </section>
     );
 }
