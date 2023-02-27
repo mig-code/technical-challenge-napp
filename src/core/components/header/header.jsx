@@ -4,6 +4,7 @@ import { CartContext } from '../../context/cart.context';
 import { BreadCrumbs } from '../breadcrumbs/breadcrumbs';
 export function Header() {
     const { cartCount } = useContext(CartContext);
+    console.log('rendering header', cartCount);
 
     return (
         <header>

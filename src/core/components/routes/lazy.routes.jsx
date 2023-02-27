@@ -19,7 +19,7 @@ export function LazyRoutes() {
                 ></Route>
 
                 <Route
-                    path={'mobile/:id'}
+                    path={'mobile/:model/:id'}
                     element={<ProductDetails></ProductDetails>}
                 ></Route>
 

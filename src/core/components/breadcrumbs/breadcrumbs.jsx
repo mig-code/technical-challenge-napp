@@ -1,15 +1,39 @@
-import React, { useContext } from 'react';
-import { BreadCrumbsContext } from '../../context/breadcrumb.context';
+import React from 'react';
+
+import { useLocation, NavLink } from 'react-router-dom';
 export const BreadCrumbs = () => {
-    const { breadcrumbs } = useContext(BreadCrumbsContext);
+    const location = useLocation();
+    console.log('rendering breadcrumbs', location.pathname);
+
+    const fullPath = location.pathname;
+    const pathArray = fullPath
+        .split('/')
+        .filter((path) => path !== 'mobile')
+        .slice(0, -1);
+
+    console.log('pathArray', pathArray);
+
+    // remove the last element of the array
 
     return (
         <div className="breadcrumbs">
-            {breadcrumbs.map((breadcrumb, index) => (
-                <div key={index} className="breadcrumb">
-                    {breadcrumb}
-                </div>
-            ))}
+            <ul>
+                {pathArray.map((path, index) => {
+                    if (path === '') {
+                        return (
+                            <li key={index}>
+                                <NavLink to="/">Móviles</NavLink>
+                            </li>
+                        );
+                    } else {
+                        return (
+                            <li key={index}>
+                                <NavLink to={`${fullPath}`}>{path}</NavLink>
+                            </li>
+                        );
+                    }
+                })}
+            </ul>
         </div>
     );
 };

@@ -1,15 +1,13 @@
-import { useEffect, useState, useCallback, useContext } from 'react';
+import { useEffect, useState, useCallback } from 'react';
 
 import { List } from '../components/list/list';
 import { SearchBox } from '../components/search.box/search.box';
 import { getProducts } from '../../../core/services/products.services';
-import { BreadCrumbsContext } from '../../../core/context/breadcrumb.context';
 
 import { manageLoadDataSource } from '../../../utils/manage.load.data';
 
 export default function ProductsListPage() {
     const [products, setProducts] = useState([]);
-    const { setBreadcrumbs } = useContext(BreadCrumbsContext);
 
     const handleLoadProducts = useCallback(async () => {
         const storageKey = 'products';
@@ -20,8 +18,7 @@ export default function ProductsListPage() {
 
     useEffect(() => {
         handleLoadProducts();
-        setBreadcrumbs(['Home', 'Products']);
-    }, [handleLoadProducts, setBreadcrumbs]);
+    }, [handleLoadProducts]);
 
     return (
         <div>

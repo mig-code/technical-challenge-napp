@@ -5,7 +5,7 @@ import { MemoryRouter as Router } from 'react-router-dom';
 import { LazyRoutes } from './lazy.routes';
 
 const mockPageTitles = ['Test Products List', 'Test Products Details'];
-const items = [{ path: '' }, { path: '/mobile/:id' }];
+const items = [{ path: '' }, { path: '/mobile/:model/:id' }];
 const testLazyRoute = (index) => {
     const title = new RegExp(mockPageTitles[index], 'i');
     const lazyElement = screen.getByText(title);

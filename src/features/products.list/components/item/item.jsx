@@ -2,9 +2,10 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 export function Item({ item }) {
-   
+    const { model, id } = item;
+    const nameWithoutSpaces = model.replace(/\s/g, '-');
     return (
-        <Link to={`/mobile/${item.id}`}>
+        <Link to={`/mobile/${nameWithoutSpaces}/${id}`}>
             <div>
                 <img
                     className="mobile-box__image"
