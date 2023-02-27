@@ -7,6 +7,7 @@ import { getProductById } from '../../../core/services/products.services';
 export default function ProductDetailsPage() {
     const [mobileData, setMobileData] = useState({});
     const mobileId = useParams().id;
+    console.log('rendering product details page');
 
     const handleLoadProduct = useCallback(async () => {
         const storageKey = mobileId;

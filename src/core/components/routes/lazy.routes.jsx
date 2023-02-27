@@ -1,5 +1,6 @@
 import { Routes, Route, Navigate } from 'react-router-dom';
 import { lazy, Suspense } from 'react';
+import { Loading } from '../loading/loading';
 
 const ProductsList = lazy(() =>
     import('../../../features/products.list/pages/products.list.page')
@@ -11,7 +12,7 @@ const ProductDetails = lazy(() =>
 
 export function LazyRoutes() {
     return (
-        <Suspense fallback={<div>Loading</div>}>
+        <Suspense fallback={<Loading></Loading>}>
             <Routes>
                 <Route
                     path={''}
@@ -19,7 +20,7 @@ export function LazyRoutes() {
                 ></Route>
 
                 <Route
-                    path={'mobile/:id'}
+                    path={'mobile/:model/:id'}
                     element={<ProductDetails></ProductDetails>}
                 ></Route>
 
