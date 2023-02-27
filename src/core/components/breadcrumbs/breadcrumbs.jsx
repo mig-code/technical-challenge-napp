@@ -23,23 +23,13 @@ export const BreadCrumbs = () => {
 
     return (
         <div className="breadcrumbs">
-            <ul>
-                {breadcrumbPathArray.map((path, index) => {
-                    if (path === '') {
-                        return (
-                            <li key={index}>
-                                <NavLink to="/">Móviles</NavLink>
-                            </li>
-                        );
-                    } else {
-                        return (
-                            <li key={index}>
-                                <NavLink to={`${fullPath}`}>{path}</NavLink>
-                            </li>
-                        );
-                    }
-                })}
-            </ul>
+            {breadcrumbPathArray.map((path) => {
+                if (path === '') {
+                    return <NavLink to="/">Móviles</NavLink>;
+                } else {
+                    return <NavLink to={`${fullPath}`}>{path}</NavLink>;
+                }
+            })}
         </div>
     );
 };
