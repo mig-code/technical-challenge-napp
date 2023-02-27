@@ -1,13 +1,7 @@
-import { useState } from 'react';
-
-export function SearchBox() {
-    const initialSearchQuery = '';
-    const [searchQuery, setSearchQuery] = useState(initialSearchQuery);
-
+export function SearchBox({ searchQuery, setSearchQuery }) {
     const handleInput = (ev) => {
         const searchInput = ev.target;
         setSearchQuery(searchInput.value);
-        console.log(searchQuery);
     };
     return (
         <div>
