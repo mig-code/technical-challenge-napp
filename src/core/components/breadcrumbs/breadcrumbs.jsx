@@ -3,22 +3,28 @@ import React from 'react';
 import { useLocation, NavLink } from 'react-router-dom';
 export const BreadCrumbs = () => {
     const location = useLocation();
-    console.log('rendering breadcrumbs', location.pathname);
-
     const fullPath = location.pathname;
-    const pathArray = fullPath
-        .split('/')
-        .filter((path) => path !== 'mobile')
-        .slice(0, -1);
 
-    console.log('pathArray', pathArray);
+    const setCleanPath = (path) => {
+        let cleanPath = path;
+        if (path === '/') return [''];
 
-    // remove the last element of the array
+        if (path.includes('mobile')) {
+            cleanPath = path
+                .split('/')
+                .filter((path) => path !== 'mobile')
+                .slice(0, -1);
+            return cleanPath;
+        }
+        return path.split('/');
+    };
+
+    const breadcrumbPathArray = setCleanPath(fullPath);
 
     return (
         <div className="breadcrumbs">
             <ul>
-                {pathArray.map((path, index) => {
+                {breadcrumbPathArray.map((path, index) => {
                     if (path === '') {
                         return (
                             <li key={index}>
