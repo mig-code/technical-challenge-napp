@@ -84,12 +84,22 @@ export function DetailsActions({ mobileData }) {
                             VOLVER
                         </button>
                     </Link>
-                    <button
-                        type="submit"
-                        className="actions__button actions__button--add"
-                    >
-                        AÑADIR AL CARRITO
-                    </button>
+                    {mobileData.price ? (
+                        <button
+                            type="submit"
+                            className="actions__button actions__button--add"
+                        >
+                            AÑADIR AL CARRITO
+                        </button>
+                    ) : (
+                        <button
+                            type="submit"
+                            className="actions__button actions__button--add"
+                            disabled
+                        >
+                            AÑADIR AL CARRITO
+                        </button>
+                    )}
                 </div>
             </form>
         </>

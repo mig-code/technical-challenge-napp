@@ -3,11 +3,15 @@ import { useParams } from 'react-router-dom';
 import { DetailsCard } from '../components/details.card/details.card';
 import { manageLoadDataSource } from '../../../utils/manage.load.data';
 import { getProductById } from '../../../core/services/products.services';
+import { Loading } from '../../../core/components/loading/loading';
 
 export default function ProductDetailsPage() {
-    const [mobileData, setMobileData] = useState({});
     const mobileId = useParams().id;
-    console.log('rendering product details page');
+
+    console.log('RENDER: ProductDetailsPage');
+
+    const [mobileData, setMobileData] = useState({});
+    const [isLoading, setIsLoading] = useState(true);
 
     const handleLoadProduct = useCallback(async () => {
         const storageKey = mobileId;
@@ -17,6 +21,7 @@ export default function ProductDetailsPage() {
             storageKey
         );
 
+        setIsLoading(false);
         setMobileData(data);
     }, [mobileId]);
 
@@ -27,7 +32,9 @@ export default function ProductDetailsPage() {
     return (
         <div>
             <h2>Product Details Page</h2>
-            {mobileData.id && (
+            {isLoading && <Loading></Loading>}
+
+            {mobileData.id && !isLoading && (
                 <DetailsCard mobileData={mobileData}></DetailsCard>
             )}
         </div>

@@ -2,6 +2,7 @@ import { DetailsActions } from '../details.actions/details.actions';
 import { DetailsInfo } from '../details.info/details.info';
 
 export function DetailsCard({ mobileData }) {
+    console.log('RENDER: DetailsCard');
     return (
         <div className="details-container">
             <div className="details-left">

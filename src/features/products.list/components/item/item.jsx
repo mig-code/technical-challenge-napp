@@ -18,7 +18,11 @@ export function Item({ item }) {
                 <p className="mobile-box__brand">{item.brand} </p>
                 <p className="mobile-box__model"> {item.model}</p>
             </div>
-            <p className="mobile-box__price">{item.price} €</p>
+            {item.price ? (
+                <p className="mobile-box__price">{item.price} €</p>
+            ) : (
+                <p className="mobile-box__price">No disponible</p>
+            )}
         </Link>
     );
 }
