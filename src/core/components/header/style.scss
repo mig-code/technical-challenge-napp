@@ -1,0 +1,25 @@
+@import '../../../sass/variables';
+
+header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 0.5rem;
+    border-bottom: $color-grey-light-1 1px solid;
+
+    h1 {
+        color: $color-white;
+        -webkit-text-stroke: 1px $color-primary;
+    }
+
+    .left-container {
+        margin-right: 1rem;
+    }
+}
+
+@media (min-width: 630px) {
+    header {
+        margin: 0.5rem 0;
+    }
+}

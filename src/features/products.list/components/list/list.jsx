@@ -1,11 +1,11 @@
 import { Item } from '../item/item';
 
 export function List({ products }) {
-    console.log('RENDER: List')
+    console.log('RENDER: List');
     return (
         <section className="search-grid">
             {products.map((item) => (
-                <article key={item.id}>
+                <article className="mobile-box" key={item.id}>
                     <Item item={item}></Item>
                 </article>
             ))}

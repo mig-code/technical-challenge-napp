@@ -38,7 +38,7 @@ export function DetailsActions({ mobileData }) {
 
         if (response) {
             notifySuccess(
-                `Se ha añadido ${response.count} producto(s) al carrito`
+                `Se ha añadido ${response.count} producto al carrito`
             );
         } else {
             notifyError('Error al añadir al carrito, inténtelo de nuevo');

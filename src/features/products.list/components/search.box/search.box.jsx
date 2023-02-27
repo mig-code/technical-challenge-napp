@@ -1,10 +1,12 @@
+import './search.box.scss';
+
 export function SearchBox({ searchQuery, setSearchQuery }) {
     const handleInput = (ev) => {
         const searchInput = ev.target;
         setSearchQuery(searchInput.value);
     };
     return (
-        <div>
+        <div className="search-box-container">
             <label htmlFor="search"></label>
             <input
                 type="text"

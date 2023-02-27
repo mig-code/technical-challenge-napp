@@ -31,8 +31,8 @@ export default function ProductsListPage() {
     }, [handleLoadProducts]);
 
     return (
-        <div>
-            <h2>Products List Page</h2>
+        <>
+            <h1>¡Encuentra el mejor móvil al mejor precio!</h1>
             <SearchBox
                 searchQuery={searchQuery}
                 setSearchQuery={setSearchQuery}
@@ -42,6 +42,6 @@ export default function ProductsListPage() {
             ) : (
                 <List products={filteredProducts}></List>
             )}
-        </div>
+        </>
     );
 }

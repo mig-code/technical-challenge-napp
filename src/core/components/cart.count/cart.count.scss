@@ -1,0 +1,22 @@
+@import '../../../sass/variables';
+@import '../../../sass/mixins';
+
+.cart-count {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    padding: 0.5rem 0.5rem;
+    border-radius: 10px;
+
+    .cart-count__icon {
+        margin-right: 0.5rem;
+        width: 30px;
+    }
+
+    .cart-count__number {
+        font-size: 1.2rem;
+        color: $color-white;
+        font-weight: bold;
+    }
+}

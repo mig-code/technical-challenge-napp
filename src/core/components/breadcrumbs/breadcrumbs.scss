@@ -1,0 +1,30 @@
+@import '../../../sass/variables';
+
+.breadcrumbs {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+
+    padding: 0.5rem 0;
+    width: 100%;
+    border-radius: 10px;
+
+    li {
+        list-style-type: none;
+        margin-right: 0.5rem;
+    }
+    a {
+        font-size: 0.8rem;
+        color: $color-primary;
+
+        &:hover {
+            cursor: pointer;
+            color: $color-primary;
+        }
+    }
+    .active {
+        font-weight: bold;
+        color: $color-primary;
+    }
+}

@@ -1,3 +1,4 @@
+import './style.scss';
 export function Footer() {
     return (
         <footer>
@@ -8,7 +9,7 @@ export function Footer() {
                     {' '}
                     Miguel Pgomez{' '}
                 </a>{' '}
-                | Naaptilus technical test
+                | Napptilus technical test
             </p>
         </footer>
     );

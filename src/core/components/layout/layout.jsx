@@ -1,6 +1,7 @@
 import { Header } from '../header/header';
 import { Toaster } from 'react-hot-toast';
 import { Footer } from '../footer/footer';
+import './layout.scss';
 
 export function Layout({ children }) {
     return (

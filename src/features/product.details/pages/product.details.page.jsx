@@ -30,13 +30,13 @@ export default function ProductDetailsPage() {
     }, [handleLoadProduct]);
 
     return (
-        <div>
+        <>
             <h2>Product Details Page</h2>
             {isLoading && <Loading></Loading>}
 
             {mobileData.id && !isLoading && (
                 <DetailsCard mobileData={mobileData}></DetailsCard>
             )}
-        </div>
+        </>
     );
 }

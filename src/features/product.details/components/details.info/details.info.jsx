@@ -16,6 +16,12 @@ export function DetailsInfo({ mobileData }) {
                 </span>
             </p>
             <p className="details-right__feature">
+                CPU
+                <span className="details-right--textmodifier">
+                    {mobileData.cpu}
+                </span>
+            </p>
+            <p className="details-right__feature">
                 RAM:
                 <span className="details-right--textmodifier">
                     {mobileData.ram}
