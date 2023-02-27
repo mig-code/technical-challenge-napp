@@ -1,7 +1,7 @@
 import toast from 'react-hot-toast';
 
-export const notifySuccess = () =>
-    toast.success('El producto se ha añadido al carrito', {
+export const notifySuccess = (success) =>
+    toast.success(success, {
         duration: 2000,
         style: {
             border: '1px solid #464d77',

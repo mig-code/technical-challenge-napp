@@ -37,7 +37,9 @@ export function DetailsActions({ mobileData }) {
         const response = await handleAddToCart(mobileForm);
 
         if (response) {
-            notifySuccess();
+            notifySuccess(
+                `Se ha añadido ${response.count} producto(s) al carrito`
+            );
         } else {
             notifyError('Error al añadir al carrito, inténtelo de nuevo');
         }
