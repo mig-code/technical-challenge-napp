@@ -8,8 +8,6 @@ import { Loading } from '../../../core/components/loading/loading';
 export default function ProductDetailsPage() {
     const mobileId = useParams().id;
 
-    console.log('RENDER: ProductDetailsPage');
-
     const [mobileData, setMobileData] = useState({});
     const [isLoading, setIsLoading] = useState(true);
 

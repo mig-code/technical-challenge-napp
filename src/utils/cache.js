@@ -8,9 +8,6 @@ const cacheStorageKey = 'lastApiCall';
 
 const timeToRefresh = 60 * 60 * 1000; // 1 hour in milliseconds 60 * 60 * 1000;
 
-// Use for testing
-//5 sec in milliseconds 5 * 1000;
-
 export const checkIfCacheIsExpired = () => {
     const currentTime = Date.now();
 
