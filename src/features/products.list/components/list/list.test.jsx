@@ -26,7 +26,7 @@ describe('When render List Component', () => {
             </MemoryRouter>
         );
         const noProductsElement = screen.getByText(
-            /No hay productos que coincidan con la búsqueda/i
+            /No hay móviles que coincidan con la búsqueda. Pruebe con otra palabra./i
         );
         expect(noProductsElement).toBeInTheDocument();
     });
