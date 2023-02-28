@@ -13,8 +13,6 @@ export default function ProductsListPage() {
     const [searchQuery, setSearchQuery] = useState('');
     const [isLoading, setIsLoading] = useState(true);
 
-    console.log('RENDER: ProductsListPage');
-
     const filteredProducts = filterByModelAndBrand(products, searchQuery);
 
     const handleLoadProducts = useCallback(async () => {
