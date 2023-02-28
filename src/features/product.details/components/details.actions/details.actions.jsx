@@ -9,8 +9,7 @@ import {
 import { notifyError, notifySuccess } from '../../../../utils/toasts';
 
 export function DetailsActions({ mobileData }) {
-    const { cartCount, handleAddToCart, resetCartCount } =
-        useContext(CartContext);
+    const { handleAddToCart, resetCartCount } = useContext(CartContext);
 
     const initialMobileFormState = {
         id: mobileData.id,
@@ -46,64 +45,57 @@ export function DetailsActions({ mobileData }) {
     };
 
     return (
-        <>
-            <form className="actions" onSubmit={handleSubmitMobileForm}>
-                <div>
-                    <h3>
-                        Cart Count <span>{cartCount}</span>
-                    </h3>
-                </div>
-                <div className="actions__colors-box">
-                    <select
-                        data-testid="color-select"
-                        name="colorCode"
-                        value={mobileForm.colorCode}
-                        onChange={handleMobileFormInput}
-                    >
-                        {mobileData.options.colors.map((item, index) => (
-                            <option key={item.code} value={item.code}>
-                                {item.name}
-                            </option>
-                        ))}
-                    </select>
+        <form className="actions" onSubmit={handleSubmitMobileForm}>
+            <div className="actions__colors-box">
+                <select
+                    data-testid="color-select"
+                    name="colorCode"
+                    value={mobileForm.colorCode}
+                    onChange={handleMobileFormInput}
+                >
+                    {mobileData.options.colors.map((item, index) => (
+                        <option key={item.code} value={item.code}>
+                            {item.name}
+                        </option>
+                    ))}
+                </select>
 
-                    <select
-                        data-testid="storage-select"
-                        name="storageCode"
-                        value={mobileForm.storageCode}
-                        onChange={handleMobileFormInput}
+                <select
+                    data-testid="storage-select"
+                    name="storageCode"
+                    value={mobileForm.storageCode}
+                    onChange={handleMobileFormInput}
+                >
+                    {mobileData.options.storages.map((item, index) => (
+                        <option key={item.code} value={item.code}>
+                            {item.name}
+                        </option>
+                    ))}
+                </select>
+            </div>
+            <div className="actions__buttons-box">
+                {mobileData.price ? (
+                    <button
+                        type="submit"
+                        className="actions__button actions__button--add"
                     >
-                        {mobileData.options.storages.map((item, index) => (
-                            <option key={item.code} value={item.code}>
-                                {item.name}
-                            </option>
-                        ))}
-                    </select>
-                </div>
-                <div className="actions__buttons-box">
-                    <Link to={`/`}>
-                        <button className="actions__button actions__button--back">
-                            VOLVER
-                        </button>
-                    </Link>
-                    {mobileData.price ? (
-                        <button
-                            type="submit"
-                            className="actions__button actions__button--add"
-                        >
-                            AÑADIR AL CARRITO
-                        </button>
-                    ) : (
-                        <button
-                            type="submit"
-                            className="actions__button actions__button--add"
-                            disabled
-                        >
-                            AÑADIR AL CARRITO
-                        </button>
-                    )}
-                </div>
-            </form>
-        </>
+                        AÑADIR AL CARRITO
+                    </button>
+                ) : (
+                    <button
+                        type="submit"
+                        className="actions__button actions__button--add"
+                        disabled
+                    >
+                        AÑADIR AL CARRITO
+                    </button>
+                )}
+                <Link to={`/`}>
+                    <button className="actions__button actions__button--back">
+                        VOLVER
+                    </button>
+                </Link>
+            </div>
+        </form>
     );
 }

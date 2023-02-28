@@ -14,4 +14,12 @@
     flex-direction: column;
     justify-content: center;
     align-items: stretch;
+    &__title {
+        margin-top: 1rem;
+        margin-bottom: 1rem;
+        font-size: 2rem;
+        font-weight: bold;
+        color: $color-primary;
+        text-align: center;
+    }
 }

@@ -14,7 +14,7 @@ export function SearchBox({ searchQuery, setSearchQuery }) {
                 id="search"
                 value={searchQuery}
                 onInput={handleInput}
-                placeholder="Encuentra tu móvil..."
+                placeholder="¿Qué modelo buscas?"
             />
         </div>
     );

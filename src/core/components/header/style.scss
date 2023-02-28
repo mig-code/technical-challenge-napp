@@ -4,8 +4,8 @@ header {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    align-items: center;
-    padding: 0 0.5rem;
+    align-items: flex-end;
+    padding: 0.5rem;
     border-bottom: $color-grey-light-1 1px solid;
 
     h1 {
@@ -18,8 +18,10 @@ header {
     }
 }
 
-@media (min-width: 630px) {
+@media (max-width: 768px) {
     header {
-        margin: 0.5rem 0;
+        h1 {
+            font-size: 1.5rem;
+        }
     }
 }

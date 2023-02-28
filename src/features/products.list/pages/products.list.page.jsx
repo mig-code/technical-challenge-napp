@@ -32,7 +32,9 @@ export default function ProductsListPage() {
 
     return (
         <>
-            <h1>¡Encuentra el mejor móvil al mejor precio!</h1>
+            <h1 className="layout-children__title">
+                ¡Encuentre el mejor móvil al mejor precio!
+            </h1>
             <SearchBox
                 searchQuery={searchQuery}
                 setSearchQuery={setSearchQuery}
