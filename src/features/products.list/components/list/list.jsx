@@ -1,4 +1,5 @@
 import { Item } from '../item/item';
+import './list.scss';
 
 export function List({ products }) {
     return (
@@ -13,8 +14,8 @@ export function List({ products }) {
             <div className="list-not-found">
                 {products.length === 0 && (
                     <p>
-                        No hay móviles que coincidan con la búsqueda. Pruebe
-                        con otra palabra.
+                        No hay móviles que coincidan con la búsqueda. Pruebe con
+                        otra palabra.
                     </p>
                 )}
             </div>
