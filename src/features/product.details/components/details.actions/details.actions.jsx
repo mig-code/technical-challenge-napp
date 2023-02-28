@@ -7,6 +7,7 @@ import {
 } from '../../../../utils/cache';
 
 import { notifyError, notifySuccess } from '../../../../utils/toasts';
+import './details.actions.scss';
 
 export function DetailsActions({ mobileData }) {
     const { handleAddToCart, resetCartCount } = useContext(CartContext);
@@ -46,34 +47,46 @@ export function DetailsActions({ mobileData }) {
 
     return (
         <form className="actions" onSubmit={handleSubmitMobileForm}>
-            <div className="actions__colors-box">
-                <select
-                    data-testid="color-select"
-                    name="colorCode"
-                    value={mobileForm.colorCode}
-                    onChange={handleMobileFormInput}
-                >
-                    {mobileData.options.colors.map((item, index) => (
-                        <option key={item.code} value={item.code}>
-                            {item.name}
-                        </option>
-                    ))}
-                </select>
+            <div className="actions__select-container">
+                <p> Personaliza tu modelo</p>
+                <div>
+                    <label htmlFor="colorCode"> Color</label>
+                    <select
+                        className="actions__select"
+                        data-testid="color-select"
+                        id="colorCode"
+                        name="colorCode"
+                        value={mobileForm.colorCode}
+                        onChange={handleMobileFormInput}
+                    >
+                        {mobileData.options.colors.map((item, index) => (
+                            <option key={item.code} value={item.code}>
+                                {item.name}
+                            </option>
+                        ))}
+                    </select>
+                </div>
+                <div>
+                    <label htmlFor="storageCode"> Almacenamiento</label>
 
-                <select
-                    data-testid="storage-select"
-                    name="storageCode"
-                    value={mobileForm.storageCode}
-                    onChange={handleMobileFormInput}
-                >
-                    {mobileData.options.storages.map((item, index) => (
-                        <option key={item.code} value={item.code}>
-                            {item.name}
-                        </option>
-                    ))}
-                </select>
+                    <select
+                        className="actions__select"
+                        data-testid="storage-select"
+                        id="storageCode"
+                        name="storageCode"
+                        value={mobileForm.storageCode}
+                        onChange={handleMobileFormInput}
+                        placeholder="Almacenamiento"
+                    >
+                        {mobileData.options.storages.map((item, index) => (
+                            <option key={item.code} value={item.code}>
+                                {item.name}
+                            </option>
+                        ))}
+                    </select>
+                </div>
             </div>
-            <div className="actions__buttons-box">
+            <div className="actions__buttons-container">
                 {mobileData.price ? (
                     <button
                         type="submit"
@@ -84,10 +97,10 @@ export function DetailsActions({ mobileData }) {
                 ) : (
                     <button
                         type="submit"
-                        className="actions__button actions__button--add"
+                        className="actions__button actions__button--not-available"
                         disabled
                     >
-                        AÑADIR AL CARRITO
+                        NO DISPONIBLE
                     </button>
                 )}
                 <Link to={`/`}>

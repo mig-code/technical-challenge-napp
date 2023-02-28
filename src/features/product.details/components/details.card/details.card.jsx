@@ -1,9 +1,10 @@
 import { MobileImage } from '../../../../core/components/mobile.image/mobile.image';
 import { DetailsActions } from '../details.actions/details.actions';
 import { DetailsInfo } from '../details.info/details.info';
+import './details.card.scss';
 
 export function DetailsCard({ mobileData }) {
-    console.log('RENDER: DetailsCard');
+   
     return (
         <div className="details-container">
             <div className="details-left">

@@ -1,5 +1,4 @@
 @import '../../../../sass/variables';
-@import '../../../../sass/mixins';
 
 .mobile-box {
     display: flex;
@@ -13,7 +12,7 @@
     background-color: $color-white;
     border-radius: 10px;
     border: 1px solid $color-black-light-1;
-    &:hover {
+    &a:hover {
         cursor: pointer;
     }
 
