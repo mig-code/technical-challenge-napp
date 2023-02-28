@@ -16,12 +16,13 @@ describe('Given Toast Module', () => {
         const mockStyles = {
             duration: 2500,
             style: {
-                border: '1px solid #ec5431',
+                border: '1px solid #5d5d5d',
                 padding: '16px',
-                color: '#ec5431',
+                color: '#e56b6f',
+                background: '#ffffff',
             },
             iconTheme: {
-                primary: '#ec5431',
+                primary: '#e56b6f',
                 secondary: '#fffaee',
             },
         };

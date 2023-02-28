@@ -1,4 +1,5 @@
 import React from 'react';
+import './breadcrumbs.scss';
 
 import { useLocation, NavLink } from 'react-router-dom';
 export const BreadCrumbs = () => {

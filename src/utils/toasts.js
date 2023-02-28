@@ -1,15 +1,16 @@
 import toast from 'react-hot-toast';
 
-export const notifySuccess = () =>
-    toast.success('El producto se ha añadido al carrito', {
+export const notifySuccess = (success) =>
+    toast.success(success, {
         duration: 2000,
         style: {
-            border: '1px solid #464d77',
+            border: '1px solid #5d5d5d',
             padding: '16px',
-            color: '#464d77',
+            color: '#58B09C',
+            background: '#ffffff',
         },
         iconTheme: {
-            primary: '#464d77',
+            primary: '#58B09C',
             secondary: '#fffaee',
         },
     });
@@ -17,12 +18,13 @@ export const notifyError = (error) =>
     toast.error(error, {
         duration: 2500,
         style: {
-            border: '1px solid #ec5431',
+            border: '1px solid #5d5d5d',
             padding: '16px',
-            color: '#ec5431',
+            color: '#e56b6f',
+            background: '#ffffff',
         },
         iconTheme: {
-            primary: '#ec5431',
+            primary: '#e56b6f',
             secondary: '#fffaee',
         },
     });

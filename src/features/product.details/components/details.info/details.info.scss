@@ -1,0 +1,33 @@
+@import '../../../../sass/variables';
+
+.details-info {
+    background-color: $color-white;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-evenly;
+    width: 450px;
+
+    &__properties-box {
+        background-color: $color-white;
+        padding: 1rem;
+        width: 100%;
+    }
+    &__model {
+        font-size: 1.3rem;
+        font-weight: bold;
+        color: $color-black-light-1;
+        margin-bottom: 0.5rem;
+    }
+    &__feature {
+        font-size: 0.9rem;
+        font-weight: bold;
+    }
+
+    &--textmodifier {
+        font-size: 0.8rem;
+        color: $color-black-light-1;
+        margin-left: 0.3rem;
+        font-weight: 400;
+    }
+}

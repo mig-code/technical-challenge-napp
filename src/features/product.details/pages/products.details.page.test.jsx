@@ -9,26 +9,26 @@ jest.mock('../../../utils/manage.load.data', () => ({
     manageLoadDataSource: jest.fn(),
 }));
 
-
+jest.mock('../../../core/components/loading/loading', () => ({
+    Loading: () => <div data-testid="spinner">Loading...</div>,
+}));
 jest.mock('../components/details.card/details.card', () => ({
     DetailsCard: () => <div>Details Card</div>,
 }));
 
 describe('When render Product Details Page', () => {
-    test('It should render the title', async () => {
+    test('Without products It should render the spinner', async () => {
         render(
             <MemoryRouter>
                 <ProductDetailsPage></ProductDetailsPage>
             </MemoryRouter>
         );
 
-        const titleElement = screen.getByRole('heading', {
-            name: /product details page/i,
-        });
-        expect(titleElement).toBeInTheDocument();
+        const spinnerElement = screen.getByTestId('spinner');
+        expect(spinnerElement).toBeInTheDocument();
     });
 
-    test('It should render the details card', async () => {
+    test('With products It should render the details card', async () => {
         manageLoadDataSource.mockResolvedValue({
             id: '1',
         });

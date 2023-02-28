@@ -1,0 +1,26 @@
+@import '../../../../sass/variables';
+
+.search-box-container {
+    width: 100%;
+
+    padding: 1rem;
+
+    input {
+        width: 100%;
+        border: 2px solid $color-black-light-2;
+        border-radius: 15px;
+        padding: 0.5rem 1rem;
+        font-size: $font-size-base;
+        font-family: $font-stack-primary;
+        color: $color-black-light-1;
+
+        margin: 0.5rem;
+        &:focus {
+            outline: none;
+            border: 2px solid $color-black-light-1;
+        }
+    }
+    ::placeholder {
+        color: $color-black-light-2;
+    }
+}

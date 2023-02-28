@@ -1,0 +1,25 @@
+@import '../../../sass/variables';
+.layout-container {
+    margin: 0 auto;
+    max-width: 1350px;
+    position: relative;
+    min-height: 100vh;
+    padding-bottom: 2.5rem;
+}
+.layout-children {
+    max-width: 1050px;
+    margin: 0 auto 1rem auto;
+    padding: 0 0.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: stretch;
+    &__title {
+        margin-top: 1rem;
+        margin-bottom: 1rem;
+        font-size: 2rem;
+        font-weight: bold;
+        color: $color-primary;
+        text-align: center;
+    }
+}

@@ -1,16 +1,24 @@
 import { Item } from '../item/item';
+import './list.scss';
 
 export function List({ products }) {
     return (
-        <section className="search-grid">
-            {products.map((item) => (
-                <article key={item.id}>
-                    <Item item={item}></Item>
-                </article>
-            ))}
-            {products.length === 0 && (
-                <p>No hay productos que coincidan con la búsqueda</p>
-            )}
-        </section>
+        <>
+            <div className="list-grid">
+                {products.map((item) => (
+                    <article className="mobile-box" key={item.id}>
+                        <Item item={item}></Item>
+                    </article>
+                ))}
+            </div>
+            <div className="list-not-found">
+                {products.length === 0 && (
+                    <p>
+                        No hay móviles que coincidan con la búsqueda. Pruebe con
+                        otra palabra.
+                    </p>
+                )}
+            </div>
+        </>
     );
 }

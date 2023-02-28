@@ -26,8 +26,8 @@ export function useCart() {
         async (mobileForm) => {
             try {
                 const result = await addProductToCart(mobileForm);
-                setCartCount((prevCount) => prevCount + 1);
-                persistDataLocalStorage(storageKey, cartCount + 1);
+                setCartCount((prevCount) => prevCount + result.count);
+                persistDataLocalStorage(storageKey, cartCount + result.count);
                 setNextCacheRefreshTime();
                 return result;
             } catch (error) {

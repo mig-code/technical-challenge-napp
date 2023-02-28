@@ -20,7 +20,7 @@ describe('When render Products List Page', () => {
             </MemoryRouter>
         );
         const titleElement = screen.getByRole('heading', {
-            name: /products list/i,
+            name: /¡Encuentre el mejor móvil al mejor precio!/i,
         });
         expect(titleElement).toBeInTheDocument();
     });
