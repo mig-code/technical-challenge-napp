@@ -1,12 +1,10 @@
-import { useEffect, useState, useCallback } from 'react';
-
-import { List } from '../components/list/list';
-import { SearchBox } from '../components/search.box/search.box';
-import { Loading } from '../../../core/components/loading/loading';
-
+import { useCallback, useEffect, useState } from 'react';
+import { LoadingLong } from '../../../core/components/loading.long/loading.long';
 import { getProducts } from '../../../core/services/products.services';
 import { manageLoadDataSource } from '../../../utils/manage.load.data';
 import { filterByModelAndBrand } from '../../../utils/search.filters';
+import { List } from '../components/list/list';
+import { SearchBox } from '../components/search.box/search.box';
 
 export default function ProductsListPage() {
     const [products, setProducts] = useState([]);
@@ -31,14 +29,14 @@ export default function ProductsListPage() {
     return (
         <>
             <h1 className="layout-children__title">
-                ¡Encuentre el mejor móvil al mejor precio!
+                ¡Encuentra el mejor móvil al mejor precio!
             </h1>
             <SearchBox
                 searchQuery={searchQuery}
                 setSearchQuery={setSearchQuery}
             ></SearchBox>
             {isLoading ? (
-                <Loading></Loading>
+                <LoadingLong></LoadingLong>
             ) : (
                 <List products={filteredProducts}></List>
             )}
